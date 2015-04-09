@@ -14,10 +14,17 @@ group :development, :test do
   gem 'spring'
 end
 gem 'bootstrap-sass'
-gem 'devise'
+gem 'devise_token_auth'
 gem 'simple_form'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'rails_layout'
 end
+
+
+gem 'react-rails'
+gem 'react-router-rails', '~>0.11.6'
+gem 'react-bootstrap-rails'
+
+gem 'bower-rails'
