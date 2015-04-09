@@ -1,8 +1,4 @@
 var Registration = React.createClass({
-  mixins: [
-    ResponseModalMixin,
-    FormStateMixin
-  ],
 
   propTypes: function() {
     return {
@@ -27,16 +23,20 @@ var Registration = React.createClass({
       errors: null
     };
   },
+	handleInputChange: function(ev) {
+  	nextState = {}
+    nextState[ev.target.name] = ev.target.value;
+    this.setState(nextState);
+  },
 
-  handleRegistrationClick: function() {
-    Auth.emailSignUp({
+
+  handleRegistrationClick: function(ev) {
+  	ev.preventDefault();
+    Auth.signup({
       email: this.state.email,
       password: this.state.password,
-      password_confirmation: this.state.password_confirmation,
-      favorite_color: this.state.favorite_color,
-      config: this.props.config
-    })
-      .then(function()  {
+      password_confirmation: this.state.password_confirmation
+    }, function()  {
         this.setState({
           sent_email: this.state.email,
           email: '',
@@ -45,12 +45,6 @@ var Registration = React.createClass({
           favorite_color: '',
           isModalOpen: true,
           errors: null
-        });
-      }.bind(this))
-      .fail(function(resp) {
-        this.setState({
-          isModalOpen: true,
-          errors: resp.data.errors
         });
       }.bind(this));
   },
@@ -83,43 +77,33 @@ var Registration = React.createClass({
     var sourceLink = <a href='https://github.com/lynndylanhurley/j-toker/blob/master/demo/src/scripts/components/registration-form.jsx' target='blank'>View component source</a>;
 
     return (
-      <Panel header='Register by Email' bsStyle='info' >
         <form>
-          <Input type='email'
+          <input type='email'
                 name='email'
                 label='Email'
                 placeholder='Enter email...'
                 value={this.state.email}
                 onChange={this.handleInputChange} />
 
-          <Input type='password'
+          <input type='password'
                 name='password'
                 label='Password'
                 placeholder='Enter password...'
                 value={this.state.password}
                 onChange={this.handleInputChange} />
 
-          <Input type='password'
+          <input type='password'
                 name='password_confirmation'
                 label='Password Confirmation'
                 placeholder='Enter password again...'
                 value={this.state.password_confirmation}
                 onChange={this.handleInputChange} />
 
-          <Input type='text'
-                name='favorite_color'
-                label='Favorite Color'
-                placeholder='Enter your favorite color...'
-                value={this.state.favorite_color}
-                onChange={this.handleInputChange} />
-
-          <Button className='btn btn-primary'
+          <button className='btn btn-primary'
                   onClick={this.handleRegistrationClick}>
             Register
-          </Button>
+          </button>
         </form>
-
-      </Panel>
     );
   }
 });

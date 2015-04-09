@@ -1,6 +1,4 @@
 var SignIn = React.createClass({
-  mixins: [ResponseModalMixin],
-
   propTypes: function() {
     return {
       signedIn: React.PropTypes.bool,
@@ -25,34 +23,22 @@ var SignIn = React.createClass({
   },
 
   handleInputChange: function(ev) {
-    var nextState = _.cloneDeep(this.state);
+  	nextState = {}
     nextState[ev.target.name] = ev.target.value;
     this.setState(nextState);
   },
 
   handleSignInClick: function(ev) {
-    Auth.emailSignIn({
-      email:    this.state.email,
-      password: this.state.password,
-      config:   this.props.config
-    })
-
-      .then(function(resp) {
-        this.setState({
-          email: '',
-          password: '',
-          errors: null,
-          isModalOpen: true
-        });
-      }.bind(this))
-
-      .fail(function(resp) {
-        this.setState({
-          errors: resp.data.errors,
-          isModalOpen: true
-        });
-      }.bind(this));
-  },
+  	ev.preventDefault();
+    Auth.login(this.state.email, this.state.password , function(resp) {
+				this.setState({
+				  email: '',
+				  password: '',
+				  errors: null,
+				  isModalOpen: true
+			});
+		}.bind(this));
+	},
 
   successModalTitle: 'Email Sign In Success',
   errorModalTitle: 'Email Sign In Error',
@@ -80,9 +66,8 @@ var SignIn = React.createClass({
     var sourceLink = <a href='https://github.com/lynndylanhurley/j-toker/blob/master/demo/src/scripts/components/login-form.jsx' target='blank'>View component source</a>;
 
     return (
-      <Panel header='Email Sign In' bsStyle='info' >
         <form>
-          <Input type='email'
+          <input type='email'
                 name='email'
                 label='Email'
                 placeholder='Enter email...'
@@ -90,7 +75,7 @@ var SignIn = React.createClass({
                 value={this.state.email}
                 onChange={this.handleInputChange} />
 
-          <Input type='password'
+          <input type='password'
                 name='password'
                 label='Password'
                 placeholder='Enter password...'
@@ -98,16 +83,13 @@ var SignIn = React.createClass({
                 value={this.state.password}
                 onChange={this.handleInputChange} />
 
-          <Button className='btn btn-primary'
+          <button className='btn btn-primary'
                   onClick={this.handleSignInClick}
                   disabled={this.props.signedIn}>
             Sign In
-          </Button>
+          </button>
         </form>
 
-
-
-      </Panel>
     );
   }
 });

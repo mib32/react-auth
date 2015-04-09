@@ -41,30 +41,10 @@ var ProfileInfo = React.createClass({
     var sourceLink = <a href='https://github.com/lynndylanhurley/j-toker/blob/master/demo/src/scripts/components/profile-info.jsx' target='blank'>View component source</a>;
 
     return (
-      <Panel header='Account Info' bsStyle='info' >
-        <Row>
-          <Col xs={9}>
-            <label>email:</label>
-            <p>{this.props.email || 'n/a'}</p>
-
-            <label>name:</label>
-            <p>{this.props.name || 'n/a'}</p>
-
-            <label>nickname:</label>
-            <p>{this.props.nickname || 'n/a'}</p>
-
-            <label>favorite color:</label>
-            <p>{this.props.favorite_color || 'n/a'}</p>
-
-            <label>using configuration:</label>
-            <p>{this.props.configName || 'n/a'}</p>
-          </Col>
-
-          <Col xs={3}>
-            {this.renderImage()}
-          </Col>
-        </Row>
-      </Panel>
+      <div>
+        <label>email:</label>
+        <p>{this.props.email || 'You are not logged in'}</p>
+      </div>
     );
   }
 });

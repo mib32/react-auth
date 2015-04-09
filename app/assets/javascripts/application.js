@@ -12,16 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require lodash
-//= require jquery-cookie
-//= require jquery-deparam
-//= require pubsub-js
-//= require j-toker
 //= require turbolinks
 //= require react
 //= require react_ujs
-//= require react_router
-//= require react_bootstrap
 //= require components
 //= require bootstrap-sprockets
 //= require_tree .

@@ -1,5 +1,4 @@
 var SignOut = React.createClass({
-  mixins: [ResponseModalMixin],
 
   propTypes: function() {
     return {

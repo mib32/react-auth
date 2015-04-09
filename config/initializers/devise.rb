@@ -4,13 +4,13 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '74b4065891b914caf21a1df662b1c44849f34844f2305428fcc7254ff05c2661791e85532ef07b782e01e0b88e92c999a4d72b791a9918a1a06b540ff0255a1b'
+  # config.secret_key = '94e33c839458ccdfb70b6e4c570d137c78a33a4df92df0dd29b90b44cd39cab8e01067bc7006700f1e836c5878166d2bc54edccb8a9671168ec3b449cde109b2'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'no-reply@' + Rails.application.secrets.domain_name
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -62,7 +62,7 @@ Devise.setup do |config|
   # config.http_authenticatable = false
 
   # If 401 status code should be returned for AJAX requests. True by default.
-  # config.http_authenticatable_on_xhr = true
+  # config.http_authenticatable_on_xhr = false;
 
   # The realm used in Http Basic Authentication. 'Application' by default.
   # config.http_authentication_realm = 'Application'
@@ -97,7 +97,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '4baf687427c4f0ad1ba704756570a433fefc622fd4caf6050c0510d2de9d1f90ff736ac9b31457a9f9e19919cbd37f0dddcac5daed34307b4ec56717fd0691b6'
+  # config.pepper = 'd5b2f34d3e23ca4268d6187af24d766fcc53eb35b56029debd37c02b7bf03981ccd546e8a192acc2dc7af3253d61107c43fbe9fc6cc8ed05fd07ee2aea4e6864'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -224,7 +224,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html]
+  config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete

@@ -14,7 +14,7 @@ group :development, :test do
   gem 'spring'
 end
 gem 'bootstrap-sass'
-gem 'devise_token_auth'
+
 gem 'simple_form'
 group :development do
   gem 'better_errors'
@@ -22,9 +22,5 @@ group :development do
   gem 'rails_layout'
 end
 
-
+gem 'devise'
 gem 'react-rails'
-gem 'react-router-rails', '~>0.11.6'
-gem 'react-bootstrap-rails'
-
-gem 'bower-rails'
