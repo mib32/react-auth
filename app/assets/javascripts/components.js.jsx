@@ -24,10 +24,15 @@ var Auth = {
     return localStorage.current_user;
   },
 
-  logout: function (cb) {
-    delete localStorage.current_user;
-    if (cb) cb();
-    this.onChange(false);
+  signOut: function (cb) {
+  	$.ajax({
+  		url: '/users/sign_out ',
+  		type: 'DELETE',
+  		success: function(){
+  			delete localStorage.current_user;
+  			if (cb) cb();
+  			Auth.onChange(false);
+  		}});
   },
   user: function(){
   	if (localStorage.current_user){
@@ -76,6 +81,7 @@ var HomePage = React.createClass({
     return (
           <div>
 	          <ProfileInfo {...this.state.user} />
+	          <SignOut {...this.props.user} />
 	          <SignIn {...this.props.user} />
 	          <Registration {...this.props.user} />
           </div>

@@ -20,23 +20,8 @@ var SignOut = React.createClass({
   },
 
   handleSignOutClick: function(ev) {
-    Auth.signOut()
-      .then(function(resp) {
-        this.setState({
-          errors: null,
-          isModalOpen: true
-        })
-      }.bind(this))
-      .fail(function(resp) {
-        this.setState({
-          errors: resp.data.errors,
-          isModalOpen: true
-        })
-      }.bind(this));
+    Auth.signOut();
   },
-
-  successModalTitle: 'Sign Out Success',
-  errorModalTitle: 'Sign Out Error',
 
   renderSuccessMessage: function() {
     return (
@@ -54,17 +39,13 @@ var SignOut = React.createClass({
     var sourceLink = <a href='https://github.com/lynndylanhurley/j-toker/blob/master/demo/src/scripts/components/signout-form.jsx' target='blank'>View component source</a>;
 
     return (
-      <Panel header='Sign Out' bsStyle='info'>
-        <Button className='btn btn-primary'
+      <div>
+        <button className='btn btn-primary'
                 onClick={this.handleSignOutClick}
-                disabled={!this.props.signedIn}>
+                disabled={!Auth.loggedIn}>
           Sign Out
-        </Button>
-
-        <br />
-        <br />
-
-      </Panel>
+        </button>
+      </div>
     )
   }
 });
