@@ -10,7 +10,6 @@ var Auth = {
     	localStorage.current_user = JSON.stringify(user);
     	Auth.onChange(user);
     }, 'JSON')
-
   },
 
   signup: function(params, cb) {
@@ -83,9 +82,6 @@ var HomePage = React.createClass({
     );
   }
 });
-
-
-
 
 $(document).ready(function(){
 	  React.render(
